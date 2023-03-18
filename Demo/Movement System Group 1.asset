@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb400f82670d4ea78751ba3f17557d71, type: 3}
   m_Name: Movement System Group 1
   m_EditorClassIdentifier: 
+  maxEntities: 50000

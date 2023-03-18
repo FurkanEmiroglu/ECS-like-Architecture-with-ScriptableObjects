@@ -1,4 +1,4 @@
-﻿public class MovementComponent : GameComponent
+﻿public class MovementComponent : SystemComponent
 {
     public float speed;
 

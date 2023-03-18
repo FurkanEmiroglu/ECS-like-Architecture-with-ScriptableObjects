@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+using UnityEngine;
 
 public class MovementSystem : GameSystem
 {
@@ -9,31 +12,70 @@ public class MovementSystem : GameSystem
     private Transform[] _transforms;
     private float[] _speeds;
 
-    public override void OnAwake()
+    public override void OnSystemAwake()
     {
-        base.OnAwake();
+        base.OnSystemAwake();
 
         _components = new MovementComponent[MaxEntities];
         _transforms = new Transform[MaxEntities];
         _speeds = new float[MaxEntities];
     }
 
-    public override void OnUpdate()
+    public override void OnSystemUpdate()
     {
         MoveForward();
+    }
+
+    [BurstCompile]
+    private struct CalculateMoveVector : IJobParallelFor
+    {
+        public NativeArray<Vector3> MoveVector;
+        public NativeArray<float> Speeds;
+        public NativeArray<Vector3> Directions;
+        public float Delta;
+
+        public void Execute(int index)
+        {
+            MoveVector[index] += Directions[index] * (Speeds[index] * Delta);
+        }
     }
     
     private void MoveForward()
     {
         float deltaTime = Time.deltaTime;
-        
-        foreach (int id in ActiveEntityIDs)
+
+        NativeArray<Vector3> moveVectors = new NativeArray<Vector3>(ActiveEntityIDs.Count, Allocator.TempJob);
+        NativeArray<float> speeds = new NativeArray<float>(_speeds, Allocator.TempJob);
+        NativeArray<Vector3> directions = new NativeArray<Vector3>(ActiveEntityIDs.Count, Allocator.TempJob);
+
+        for (int i = 0; i < ActiveEntityIDs.Count; i++)
         {
-            _transforms[id].position += _transforms[id].forward * (_components[id].speed * deltaTime);
+            Transform t = _transforms[ActiveEntityIDs[i]];
+            directions[i] = t.forward;
+            speeds[i] = _speeds[i];
         }
+
+        CalculateMoveVector job = new CalculateMoveVector
+        {
+            MoveVector = moveVectors, Speeds = speeds, Directions = directions, Delta = deltaTime
+        };
+
+        JobHandle jobHandle = job.Schedule(ActiveEntityIDs.Count, 64);
+        
+        jobHandle.Complete();
+        
+        speeds.Dispose();
+        directions.Dispose();
+
+        for (int i = 0; i < ActiveEntityIDs.Count; i++)
+        {
+            Transform t = _transforms[ActiveEntityIDs[i]];
+            t.position += moveVectors[i];
+        }
+        moveVectors.Dispose();
     }
 
-    public override void RegisterComponent(GameComponent component)
+    public override void RegisterComponent(SystemComponent component)
     {
         base.RegisterComponent(component);
         int id = component.EntityID;

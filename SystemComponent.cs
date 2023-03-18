@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class GameComponent : MonoBehaviour
+public abstract class SystemComponent : MonoBehaviour
 {
     [SerializeField] private GameSystem system;
 

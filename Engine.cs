@@ -9,25 +9,33 @@ namespace GameCore
         private void Awake()
         {
             foreach (GameSystem system in systems)
-                system.OnAwake();
+                system.OnSystemAwake();
         }
         
         private void Start()
         {
             foreach (GameSystem system in systems)
-                system.OnStart();
+                system.OnSystemStart();
         }
         
         private void Update()
         {
             foreach (GameSystem system in systems)
-                system.OnUpdate();
+                system.OnSystemUpdate();
         }
-        
+
+        private void LateUpdate()
+        {
+            foreach (GameSystem system in systems)
+            {
+                system.OnSystemLateUpdate();
+            }
+        }
+
         private void FixedUpdate()
         {
             foreach (GameSystem system in systems)
-                system.OnFixedUpdate();
+                system.OnSystemFixedUpdate();
         }
         
         private void OnEnable()
@@ -40,6 +48,14 @@ namespace GameCore
         {
             foreach (GameSystem system in systems)
                 system.OnSystemDisable();
+        }
+
+        private void OnDestroy()
+        {
+            foreach (GameSystem system in systems)
+            {
+                system.OnSystemDestroy();
+            }
         }
     }
 }
