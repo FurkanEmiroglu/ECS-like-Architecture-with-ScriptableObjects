@@ -10,13 +10,16 @@ public abstract class SystemComponent : MonoBehaviour
     public int EntityID { get; set; } = -1;
     
     /// <summary>
-    /// Makes system
+    /// Registering component to the referenced system
     /// </summary>
     protected void RegisterComponent()
     {
         system.RegisterComponent(this);
     }
     
+    /// <summary>
+    /// Removing component from the referenced system
+    /// </summary>
     protected void RemoveComponent()
     {
         system.RemoveComponent(this);
