@@ -40,15 +40,15 @@ public class MovementComponent : SystemComponent
 **3. Depending on when you want the game object to move, register in the system where the action starts.**
 
 ```java
-        private void OnEnable()
-        {
-            RegisterComponent();
-        }
+private void OnEnable()
+{
+    RegisterComponent();
+}
 
-        private void OnDisable()
-        {
-            RemoveComponent();
-        }
+private void OnDisable()
+{
+    RemoveComponent();
+}
 
 ```
 
@@ -56,20 +56,20 @@ public class MovementComponent : SystemComponent
 
 ```java
 public class MovementComponent : SystemComponent
+{
+    [SerializeField] private float speed;
+    public float Speed { get { return speed; } }
+
+    private void OnEnable()
     {
-        [SerializeField] private float speed;
-        public float Speed { get { return speed; } }
-
-        private void OnEnable()
-        {
-            RegisterComponent();
-        }
-
-        private void OnDisable()
-        {
-            RemoveComponent();
-        }
+        RegisterComponent();
     }
+
+    private void OnDisable()
+    {
+        RemoveComponent();
+    }
+}
 ```
 
 **4. Create a system class which derives from GameSystem that will contain your logic.** 
@@ -87,7 +87,6 @@ public class MovementSystem : GameSystem
 {
     [SerializeField] private int maxEntities;
     protected override void MaxEntities {get {return maxEntities; } }
-   
 }
 ```
 
