@@ -18,7 +18,7 @@ Engine knows System references via inspector, and connects their logic to the Un
 **1. Create a monobehaviour class which derives from "SystemComponent" class.** \
 **2. Put every data exclusive to that gameobject which will be used in your logic.**
 
-```
+```java
 using UnityEngine
 
 public class MovementComponent : SystemComponent
@@ -39,7 +39,7 @@ public class MovementComponent : SystemComponent
 
 **3. Depending on when you want the game object to move, register in the system where the action starts.**
 
-```
+```java
         private void OnEnable()
         {
             RegisterComponent();
@@ -54,7 +54,7 @@ public class MovementComponent : SystemComponent
 
 *Final version of movement component*
 
-```
+```java
 public class MovementComponent : SystemComponent
     {
         [SerializeField] private float speed;
@@ -74,7 +74,7 @@ public class MovementComponent : SystemComponent
 
 **4. Create a system class which derives from GameSystem that will contain your logic.** 
 
-```
+```java
 public class MovementSystem : GameSystem
 {
     protected override void MaxEntities {get;}
@@ -82,7 +82,7 @@ public class MovementSystem : GameSystem
 ```
 
 **5. Add a field declaring maximum entity (gameobject) count.**
-```
+```java
 public class MovementSystem : GameSystem
 {
     [SerializeField] private int maxEntities;
@@ -93,7 +93,7 @@ public class MovementSystem : GameSystem
 
 **6. Lets create an array of transforms & components, to maintain objects that registered to the system.**
 
-```
+```java
 public class MovementSystem : GameSystem
 {
     [SerializeField] private int maxEntities;
@@ -106,7 +106,7 @@ public class MovementSystem : GameSystem
 ```
 
 **7. Lets populate these arrays on component register operation by overriding RegisterComponent method**
-```
+```java
 public class MovementSystem : GameSystem
 {
     [SerializeField] private int maxEntities;
@@ -131,7 +131,7 @@ public class MovementSystem : GameSystem
 
 **7. You need to clear/redefine these array references at awake, because of how scriptableobjects work.**
 
-```
+```java
 public class MovementSystem : GameSystem
 {
     [SerializeField] private int maxEntities;
@@ -164,7 +164,7 @@ public class MovementSystem : GameSystem
 ```
 
 **8. Lets create a struct to define our movement logic via C# jobs system**
-```
+```java
     [BurstCompile]
     public struct CalculateMoveVector : IJobParallelFor
     {
@@ -181,7 +181,7 @@ public class MovementSystem : GameSystem
 ```
 
 **9. Define our Movement logic inside MovementSystem.cs and call the function on Update**
-```
+```java
 public class MovementSystem : GameSystem
 {
     [SerializeField] private int maxEntities;
@@ -251,7 +251,7 @@ public class MovementSystem : GameSystem
 
 **10. Add Asset Menu Attribute to the movement system**
 
-```
+```java
 [UnityEngine.CreateAssetMenu]
 public class MovementSystem : GameSystem
 ```
