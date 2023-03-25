@@ -333,7 +333,7 @@ MonoBehaviour:
     type: 3}
   oopPrefab: {fileID: 3432584671248901595, guid: 3c10cf326bf94ee49876ed6aaebece18,
     type: 3}
-  count: 49999
+  count: 15000
 --- !u!1 &1693506378
 GameObject:
   m_ObjectHideFlags: 0

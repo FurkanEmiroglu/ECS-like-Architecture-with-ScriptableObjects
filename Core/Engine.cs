@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameCore
+namespace ECSArchitecture.Core
 {
     public class Engine : MonoBehaviour
     {
