@@ -105,6 +105,7 @@ public class MovementSystem : GameSystem
 ```
 
 **7. Lets populate these arrays on component register operation by overriding RegisterComponent method**
+Base method will assign unique id's to each component & the id will be used as it's index.
 ```java
 public class MovementSystem : GameSystem
 {
@@ -264,3 +265,4 @@ public class MovementSystem : GameSystem
 - The amount of performance gained through this approach is directly related to your knowledge of the C# jobs system and the multithread efficiency of your algorithm.
 - Do not forget that Burst Compiler gives very different performance results in editor than build, and always test your applications on the target platform.
 - Since you can easily inject the references of GameSystem scriptableobjects into monobehaviours, feel free to add the methods to be called outside of Unity callbacks as public to your systems and call the added method anywhere you want.
+- Changing Engine.cs execution order to just before default execution order is highly recommended.
