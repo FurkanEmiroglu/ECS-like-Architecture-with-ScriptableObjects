@@ -5,8 +5,8 @@
 System has three core classes.
 
 - **Engine:** Because scriptableobject's doesn't have MonoBehaviour callbacks, we need a wrapper.
-Engine knows System references via inspector, and connects their logic to the Unity's callbacks.
-- **Component:** This is a monobehaviour used for data storage and handling registration/unregistration of a gameobject to the systems.
+Engine knows System reference via inspector, and connects their logic to the Unity's callbacks.
+- **Component:** This is a monobehaviour used for data storage and handling registration/unregistration of a gameobject to the systems. Also stores ENTITY ID.
 - **System:** A scriptable object contains all the logic for the gameobjects.
 
 *note:* Remember that systems can also contain logic that will run outside of callbacks. Since they are scriptableobjects, you can call any public method outside of the callback, anywhere you want by binding its references via the inspector. This idea is inspired by Ryan Hipple's ScriptableObject Runtime Sets idea.
