@@ -1,30 +1,16 @@
 {
-  "name": "com.furkanemiroglu.ecsarchitecture",
-  "displayName": "ECS-Architecture-wScriptableObjects",
+  "author": "Furkan Emiroglu",
+  "name": "com.femiroglu.ecs",
+  "displayName": "ECS-like Architecture with ScriptableObjects",
   "version": "1.0.1",
   "unity": "2021.3",
-  "description": "A simple ecs-like game architecture promotes data driven programming using scriptable objects.",
+  "description": "ECS Architecture with ScriptableObjects, courages data oriented programming. Check out the documentation.",
+  "documentationUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects#readme",
+  "changelogUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects#readme",
+  "licensesUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects#readme",
 
-  "category": "FurkanEmiroglu",
-
-  "documentationUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects",
-  "changelogUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects",
-  "licensesUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects",
-
-  "author":
-  {
-    "name": "Furkan Emiroglu",
-    "email": "emiroglu.furkan@gmail.com",
-    "url": "http://www.furkanemiroglu.com/"
-  },
-
-  "publishConfig": 
-  {
-    "registry": "https://npm.pkg.github.com/FurkanEmiroglu"
-  },
-  
   "repository": {
-		"type" : "git",
-		"url": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects.git"
-	}
+    "type": "git",
+    "url": "github:furkanemiroglu/ecs-like-architecture-with-scriptableobjects"
+  }
 }
