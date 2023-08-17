@@ -298,3 +298,4 @@ Now you can install the package from My Registries page in the Package Manager
 window.
 
 ![My Registries](https://user-images.githubusercontent.com/343936/162576825-4a9a443d-62f9-48d3-8a82-a3e80b486f04.png)
+
