@@ -11,7 +11,6 @@ Engine knows System reference via inspector, and connects their logic to the Uni
 
 *note:* Remember that systems can also contain logic that will run outside of callbacks. Since they are scriptableobjects, you can call any public method outside of the callback, anywhere you want by binding its references via the inspector. This idea is inspired by Ryan Hipple's ScriptableObject Runtime Sets idea.
 
-
 ### Instructions & Demo Explanation
 
 **1. Create a monobehaviour class which derives from "SystemComponent" class.** \
