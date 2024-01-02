@@ -2,7 +2,7 @@
   "author": "Furkan Emiroglu",
   "name": "com.femiroglu.ecs",
   "displayName": "ECS-like Architecture with ScriptableObjects",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "unity": "2021.3",
   "description": "ECS Architecture with ScriptableObjects, courages data oriented programming. Check out the documentation.",
   "documentationUrl": "https://github.com/FurkanEmiroglu/ECS-like-Architecture-with-ScriptableObjects#readme",
